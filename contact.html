@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak Kami</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: black;
+            margin-bottom: 20px;
+        }
+        .contact-info, .contact-form {
+            margin-bottom: 20px;
+        }
+        .contact-info h2, .contact-form h2 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        .contact-info p, .contact-form p {
+            color: #555;
+            margin: 5px 0;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px 0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .contact-form button {
+            background-color: black;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: black;
+        }
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 0 0 8px 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kontak Kami</h1>
+        <div class="contact-info">
+            <h2>Informasi Kontak</h2>
+            <p><strong>Alamat:</strong> Jalan Contoh No. 123, Kota Contoh, Indonesia</p>
+            <p><strong>Telepon:</strong> +62 123 456 7890</p>
+            <p><strong>Email:</strong> info@contoh.com</p>
+        </div>
+        <div class="contact-form">
+            <h2>Kirim Pesan</h2>
+            <form action="#" method="post">
+                <input type="text" name="name" placeholder="Nama Anda" required>
+                <input type="email" name="email" placeholder="Email Anda" required>
+                <input type="tel" name="phone" placeholder="Nomor Telepon (opsional)">
+                <textarea name="message" rows="5" placeholder="Pesan Anda" required></textarea>
+                <button type="submit">Kirim Pesan</button>
+            </form>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 MyWebsite. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

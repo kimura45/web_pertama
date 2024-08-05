@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Transaksi</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        td {
+            padding: 10px;
+            vertical-align: top;
+        }
+        .input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #218838;
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body onload="displayProductDetails()">
+    <!-- Main Content -->
+    <main>
+        <h1>Detail Produk</h1>
+        <table>
+            <tr>
+                <td rowspan="6" style="width: 40%;">
+                    <img id="product-image" class="product-image" src="" alt="Gambar Produk">
+                </td>
+                <td><strong>Nama Produk:</strong></td>
+                <td id="product-name"></td>
+            </tr>
+            <tr>
+                <td><strong>Deskripsi:</strong></td>
+                <td id="product-description"></td>
+            </tr>
+            <tr>
+                <td><strong>Harga:</strong></td>
+                <td id="product-price"></td>
+            </tr>
+            <tr>
+                <td><strong>Nama Pembeli:</strong></td>
+                <td><input id="buyer-name" class="input" type="text" name="nama" placeholder="Masukkan nama"></td>
+            </tr>
+            <tr>
+                <td><strong>Alamat:</strong></td>
+                <td><input id="buyer-address" class="input" type="text" name="alamat" placeholder="Masukkan alamat"></td>
+            </tr>
+            <tr>
+                <td><strong>No Handphone:</strong></td>
+                <td><input id="buyer-phone" class="input" type="text" name="nohp" placeholder="Masukkan nomor handphone"></td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <button class="button" onclick="processPurchase()">Proses Pembelian</button>
+                </td>
+            </tr>
+        </table>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p><marquee>KIMURA STORE</marquee></p>
+    </footer>
+
+    <script>
+        function getProductDetails() {
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get('product');
+
+            const products = {
+                1: {name: 'Evans', description: 'Terbuat dari bahan cotton combed 30s 100%', price: 'Rp70.000', image: 'kaos.jpg'},
+                2: {name: 'Evans White', description: 'Terbuat dari bahan cotton combed 24s', price: 'Rp100.000', image: 'download.jpg'},
+                3: {name: 'Evans Black Premium', description: 'Dengan bahan premium import dari Jepang', price: 'Rp120.000', image: 'kaos3.jpg'},
+                4: {name: 'Celana Formal', description: 'Terbuat dari bahan parasut lembut cocok untuk kerja', price: 'Rp60.000', image: 'celana1.jpg'},
+                5: {name: 'Celana Skena', description: 'Terbuat dari bahan berkualitas', price: 'Rp80.000', image: 'celana2.jpg'},
+                6: {name: 'Celana Starboy', description: 'Bahan denim, model slim fit', price: 'Rp150.000', image: 'celana3.jpg'},
+                7: {name: 'Celana Santai', description: 'Bahan ringan dan nyaman', price: 'Rp50.000', image: 'celanapendek1.jpg'},
+                8: {name: 'Celana Gaul', description: 'Model casual, cocok untuk santai', price: 'Rp55.000', image: 'celanapendek2.jpg'},
+                9: {name: 'Celana Lembut', description: 'Bahan katun lembut di kulit', price: 'Rp65.000', image: 'celanapendek3.jpg'},
+                10: {name: 'Bucket Hat', description: 'Topi bucket hat trendy', price: 'Rp50.000', image: 'topi1.jpg'},
+                11: {name: 'Snapback', description: 'Topi snapback dengan desain stylish', price: 'Rp70.000', image: 'topi2.jpg'},
+                12: {name: 'Topi Starboy', description: 'Topi jaring dengan desain kekinian', price: 'Rp60.000', image: 'topi3.jpg'},
+                13: {name: 'Heritage Black', description: 'Sepatu dengan style kekinian', price: 'Rp800.000', image: 'sepatu1.jpg'},
+                14: {name: 'Air Force 1 Black', description: 'Sepatu keren cocok untuk nongkrong', price: 'Rp1.800.000', image: 'sepatu2.jpg'},
+                15: {name: 'Converse Chuck Taylor Women', description: 'Sepatu wanita modern dan trendy', price: 'Rp1.500.000', image: 'sepatu3.jpg'}
+            };
+
+            return products[productId];
+        }
+
+        function displayProductDetails() {
+            const product = getProductDetails();
+            if (product) {
+                document.getElementById('product-name').innerText = product.name;
+                document.getElementById('product-description').innerText = product.description;
+                document.getElementById('product-price').innerText = product.price;
+                document.getElementById('product-image').src = product.image;
+            }
+        }
+
+        function processPurchase() {
+            const buyerName = document.getElementById('buyer-name').value;
+            const buyerAddress = document.getElementById('buyer-address').value;
+            const buyerPhone = document.getElementById('buyer-phone').value;
+            const product = getProductDetails();
+
+            if (buyerName && buyerAddress && buyerPhone && product) {
+                // Perbaiki parameter yang dikirimkan
+                const invoiceUrl = `invoice.html?name=${encodeURIComponent(buyerName)}&address=${encodeURIComponent(buyerAddress)}&phone=${encodeURIComponent(buyerPhone)}&productId=${encodeURIComponent(product.name)}`;
+                console.log("Redirecting to:", invoiceUrl); // Debugging
+                window.location.href = invoiceUrl;
+            } else {
+                alert('Silakan isi semua informasi pembeli.');
+            }
+        }
+    </script>
+</body>
+</html>

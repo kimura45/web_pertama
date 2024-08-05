@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Pembelian</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, p {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body onload="displayInvoiceDetails()">
+    <!-- Main Content -->
+    <main>
+        <h1>Invoice Pembelian</h1>
+        <table>
+            <tr>
+                <td colspan="2">
+                    <h2>Detail Pembeli</h2>
+                    <p><strong>Nama:</strong> <span id="buyer-name"></span></p>
+                    <p><strong>Alamat:</strong> <span id="buyer-address"></span></p>
+                    <p><strong>No Handphone:</strong> <span id="buyer-phone"></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>Detail Produk</h2>
+                    <p><strong>Nama Produk:</strong> <span id="product-name"></span></p>
+                    <p><strong>Deskripsi:</strong> <span id="product-description"></span></p>
+                    <p><strong>Harga:</strong> <span id="product-price"></span></p>
+                </td>
+                <td style="width: 40%;">
+                    <img id="product-image" src="" alt="Gambar Produk" style="max-width: 100%; height: auto;">
+                </td>
+            </tr>
+        </table>
+    </main>
+    <footer class="footer">
+        <p><marquee>KIMURA STORE</marquee></p>
+    </footer>
+    <script>
+        function getInvoiceDetails() {
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get('productId');
+            const buyerName = params.get('name');
+            const buyerAddress = params.get('address');
+            const buyerPhone = params.get('phone');
+
+            const products = {
+                'Evans': {name: 'Evans', description: 'Terbuat dari bahan cotton combed 30s 100%', price: 'Rp70.000', image: 'kaos.jpg'},
+                'Evans White': {name: 'Evans White', description: 'Terbuat dari bahan cotton combed 24s', price: 'Rp100.000', image: 'download.jpg'},
+                'Evans Black Premium': {name: 'Evans Black Premium', description: 'Dengan bahan premium import dari Jepang', price: 'Rp120.000', image: 'kaos3.jpg'},
+                'Celana Formal': {name: 'Celana Formal', description: 'Terbuat dari bahan parasut lembut cocok untuk kerja', price: 'Rp60.000', image: 'celana1.jpg'},
+                'Celana Skena': {name: 'Celana Skena', description: 'Terbuat dari bahan berkualitas', price: 'Rp80.000', image: 'celana2.jpg'},
+                'Celana Starboy': {name: 'Celana Starboy', description: 'Bahan denim, model slim fit', price: 'Rp150.000', image: 'celana3.jpg'},
+                'Celana Santai': {name: 'Celana Santai', description: 'Bahan ringan dan nyaman', price: 'Rp50.000', image: 'celanapendek1.jpg'},
+                'Celana Gaul': {name: 'Celana Gaul', description: 'Model casual, cocok untuk santai', price: 'Rp55.000', image: 'celanapendek2.jpg'},
+                'Celana Lembut': {name: 'Celana Lembut', description: 'Bahan katun lembut di kulit', price: 'Rp65.000', image: 'celanapendek3.jpg'},
+                'Bucket Hat': {name: 'Bucket Hat', description: 'Topi bucket hat trendy', price: 'Rp50.000', image: 'topi1.jpg'},
+                'Snapback': {name: 'Snapback', description: 'Topi snapback dengan desain stylish', price: 'Rp70.000', image: 'topi2.jpg'},
+                'Topi Starboy': {name: 'Topi Starboy', description: 'Topi jaring dengan desain kekinian', price: 'Rp60.000', image: 'topi3.jpg'},
+                'Heritage Black': {name: 'Heritage Black', description: 'Sepatu dengan style kekinian', price: 'Rp800.000', image: 'sepatu1.jpg'},
+                'Air Force 1 Black': {name: 'Air Force 1 Black', description: 'Sepatu keren cocok untuk nongkrong', price: 'Rp1.800.000', image: 'sepatu2.jpg'},
+                'Converse Chuck Taylor Women': {name: 'Converse Chuck Taylor Women', description: 'Sepatu wanita modern dan trendy', price: 'Rp1.500.000', image: 'sepatu3.jpg'}
+            };
+
+            return {
+                buyerName,
+                buyerAddress,
+                buyerPhone,
+                product: products[productId] || {}
+            };
+        }
+
+        function displayInvoiceDetails() {
+            const details = getInvoiceDetails();
+            if (details.product) {
+                document.getElementById('buyer-name').innerText = details.buyerName;
+                document.getElementById('buyer-address').innerText = details.buyerAddress;
+                document.getElementById('buyer-phone').innerText = details.buyerPhone;
+                document.getElementById('product-name').innerText = details.product.name;
+                document.getElementById('product-description').innerText = details.product.description;
+                document.getElementById('product-price').innerText = details.product.price;
+                document.getElementById('product-image').src = details.product.image;
+            }
+        }
+    </script>
+</body>
+</html>

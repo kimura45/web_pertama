@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh Website E-Commerce</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        header nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        .sidebar {
+            float: left;
+            width: 20%;
+            padding: 10px;
+        }
+        .content {
+            float: left;
+            width: 75%;
+            padding: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .category {
+            display: none;
+        }
+        .category.active {
+            display: block;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    <script>
+        function showCategory(categoryId) {
+            var categories = document.getElementsByClassName('category');
+            for (var i = 0; i < categories.length; i++) {
+                categories[i].style.display = 'none';
+            }
+            if (categoryId === 'all') {
+                for (var i = 0; i < categories.length; i++) {
+                    categories[i].style.display = 'block';
+                }
+            } else {
+                document.getElementById(categoryId).style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body onload="showCategory('all')">
+    <!-- Header -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="awal.html">Home</a></li>
+                <li><a href="atan.html">Produk</a></li>
+                <li><a href="profile.html">About Me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="sidebar">
+            <h2>Kategori</h2>
+            <ul>
+                <li><a href="javascript:showCategory('all')">Semua Produk</a></li>
+                <li><a href="javascript:showCategory('kaos')">Kaos</a></li>
+                <li><a href="javascript:showCategory('celana')">Celana</a></li>
+                <li><a href="javascript:showCategory('pendek')">Celana Pendek</a></li>
+                <li><a href="javascript:showCategory('topi')">Topi</a></li>
+                <li><a href="javascript:showCategory('sepatu')">Sepatu</a></li>
+            </ul>
+        </section>
+        <section class="content">
+            <center>
+                <h1>Daftar Produk</h1>
+            </center>
+            
+            <div id="kaos" class="category active">
+                <h2>Kaos</h2>
+                <table>
+                    <tr>
+                        <td style="width: 30%;">
+                            <img src="kaos.jpg" alt="Kaos 1" width="150" height="150">
+                            <h3>Evans</h3>
+                            <p>Terbuat dari bahan cotton combed 30s 100%</p>
+                            <p>Harga: Rp70.000</p>
+                            <a href="transaksi.html?product=1&name=Evans&description=Terbuat%20dari%20bahan%20cotton%20combed%2030s%20100%25&price=Rp70.000&image=kaos.jpg"><button>Beli</button></a>
+                        </td>
+                        <td style="width: 30%;">
+                            <img src="download.jpg" alt="Kaos 2" width="150" height="150">
+                            <h3>Evans White</h3>
+                            <p>Terbuat dari bahan cotton combed 24s</p>
+                            <p>Harga: Rp100.000</p>
+                            <a href="transaksi.html?product=2&name=Evans%20White&description=Terbuat%20dari%20bahan%20cotton%20combed%2024s&price=Rp100.000&image=download.jpg"><button>Beli</button></a>
+                        </td>
+                        <td style="width: 30%;">
+                            <img src="kaos3.jpg" alt="Kaos 3" width="150" height="150">
+                            <h3>Evans Black Premium</h3>
+                            <p>Dengan bahan premium import dari jepang</p>
+                            <p>Harga: Rp120.000</p>
+                            <a href="transaksi.html?product=3&name=Evans%20Black%20Premium&description=Dengan%20bahan%20premium%20import%20dari%20jepang&price=Rp120.000&image=kaos3.jpg"><button>Beli</button></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div id="celana" class="category">
+                <h2>Celana Panjang</h2>
+                <table>
+                    <tr>
+                        <td style="width: 30%;">
+                            <img src="celana1.jpg" alt="Celana 1" width="150" height="150">
+                            <h3>Celana Formal</h3>
+                            <p>Terbuat dari bahan parasut lembut cocok untuk kerja</p>
+                            <p>Harga: Rp60.000</p>
+                            <a href="transaksi.html?product=4&name=Celana%20Formal&description=Terbuat%20dari%20bahan%20parasut%20lembut%20cocok%20untuk%20kerja&price=Rp60.000&image=celana1.jpg"><button>Beli</button></a>
+                        </td>
+                        <td style="width: 30%;">
+                            <img src="celana2.jpg" alt="Celana 2" width="150" height="150">
+                            <h3>Celana Skena</h3>
+                            <p>Terbuat dari bahan berkualitas</p>
+                            <p>Harga: Rp80.000</p>
+                            <a href="transaksi.html?product=5&name=Celana%20Skena&description=Terbuat%20dari%20bahan%20berkualitas&price=Rp80.000&image=celana2.jpg"><button>Beli</button></a>
+                        </td>
+                        <td style="width: 30%;">
+                            <img src="celana3.jpg" alt="Celana 3" width="150" height="150">
+                            <h3>Celana Starboy</h3>
+                            <p>Bahan denim, model slim fit</p>
+                            <p>Harga: Rp150.000</p>
+                            <a href="transaksi.html?product=6&name=Celana%20Starboy&description=Bahan%20denim,%20model%20slim%20fit&price=Rp150.000&image=celana3.jpg"><button>Beli</button></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div id="pendek" class="category">
+                <h2>Celana Pendek</h2>
+                <table>
+                    <tr>
+                        <td style="width: 30%;">
+                            <img src="celanapendek1.jpg" alt="Celana Pendek 1" width="150" height="150">
+                            <h3>Celana Santai</h3>
+                            <p>Bahan ringan dan nyaman</p>
+                            <p>Harga: Rp50.000</p>
+                            <a href="transaksi.html?product=7&name=Celana%20Santai&description=Bahan%20ringan%20dan%20nyaman&price=Rp50.000&image=celanapendek1.jpg"><button>Beli</button></a>
+                        </td>
+                        <td style="width: 30%;">
+                            <img src="celanapendek2.jpg" alt="Celana Pendek 2" width="150" height="150">
+                            <h3>Celana Gaul</h3>
+                            <p>Model casual, cocok untuk santai</p>
+                            <p>Harga: Rp55.000</p>
+                            <a href="transaksi.html?product=8&name=Celana%20Gaul&description=Model%20casual,%20cocok%20untuk%20santai&price=Rp55.000&image=celanapendek2.jpg"><button>Beli</button></a>
+                        </td>
+                        <td style="width: 30%;">
+                            <img src="celanapendek3.jpg" alt="Celana Pendek 3" width="150" height="150">
+                            <h3>Celana Lembut</h3>
+                            <p>Bahan katun lembut di kulit</p>
+                            <p>Harga: Rp65.000</p>
+                            <a href="transaksi.html?product=9&name=Celana%20Lembut&description=Bahan%20katun%20lembut%20di%20kulit&price=Rp65.000&image=celanapendek3.jpg"><button>Beli</button></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div id="topi" class="category">
+                <h2>Topi</h2>
+                <table>
+                    <tr>
+                        <td style="width: 30%;">
+                            <img src="topi1.jpg" alt="Topi 1" width="150" height="150">
+                            <h3>Bucket Hat</h3>
+                            <p>Topi bucket hat trendy</p>
+                            <p>Harga: Rp50.000</p>
+                            <a href="transaksi.html?product=10&name=Bucket%20Hat&description=Topi%20bucket%20hat%20trendy&price=Rp50.000&image=topi1.jpg"><button>Beli</button></a>
+                        </td>
+                        <td style="width: 30%;">
+                            <img src="topi2.jpg" alt="Topi 2" width="150" height="150">
+                            <h3>Snapback</h3>
+                            <p>Topi snapback dengan desain stylish</p>
+                            <p>Harga: Rp70.000</p>
+                            <a href="transaksi.html?product=11&name=Snapback&description=Topi%20snapback%20dengan%20desain%20stylish&price=Rp70.000&image=topi2.jpg"><button>Beli</button></a>
+                        </td>
+                        <td style="width: 30%;">
+                            <img src="topi3.jpg" alt="Topi 3" width="150" height="150">
+                            <h3>Topi Starboy</h3>
+                            <p>Topi jaring dengan desain kekinian</p>
+                            <p>Harga: Rp60.000</p>
+                            <a href="transaksi.html?product=12&name=Topi%20Starboy&description=Topi%20jaring%20dengan%20desain%20kekinian&price=Rp60.000&image=topi3.jpg"><button>Beli</button></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div id="sepatu" class="category">
+                <h2>Sepatu</h2>
+                <table>
+                    <tr>
+                        <td style="width: 30%;">
+                            <img src="sepatu1.jpg" alt="Sepatu 1" width="150" height="150">
+                            <h3>Heritage Black</h3>
+                            <p>Sepatu dengan style kekinian</p>
+                            <p>Harga: Rp800.000</p>
+                            <a href="transaksi.html?product=13&name=Heritage%20Black&description=Sepatu%20dengan%20style%20kekinian&price=Rp800.000&image=sepatu1.jpg"><button>Beli</button></a>
+                        </td>
+                        <td style="width: 30%;">
+                            <img src="sepatu2.jpg" alt="Sepatu 2" width="150" height="150">
+                            <h3>Air Force 1 Black</h3>
+                            <p>Sepatu keren cocok untuk nongkrong</p>
+                            <p>Harga: Rp1.800.000</p>
+                            <a href="transaksi.html?product=14&name=Air%20Force%201%20Black&description=Sepatu%20keren%20cocok%20untuk%20nongkrong&price=Rp1.800.000&image=sepatu2.jpg"><button>Beli</button></a>
+                        </td>
+                        <td style="width: 30%;">
+                            <img src="sepatu3.jpg" alt="Sepatu 3" width="150" height="150">
+                            <h3>Converse Chuck Taylor Women</h3>
+                            <p>Sepatu wanita modern dan trendy</p>
+                            <p>Harga: Rp1.500.000</p>
+                            <a href="transaksi.html?product=15&name=Converse%20Chuck%20Taylor%20Women&description=Sepatu%20wanita%20modern%20dan%20trendy&price=Rp1.500.000&image=sepatu3.jpg"><button>Beli</button></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p><marquee>KIMURA STORE </marquee></p>
+    </footer>
+</body>
+</html>
